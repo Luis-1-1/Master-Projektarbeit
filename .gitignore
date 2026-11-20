@@ -1,0 +1,42 @@
+# LaTeX-Hilfsdateien
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.lol
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.synctex.gz
+*.synctex(busy)
+*.fls
+*.fdb_latexmk
+*.xdv
+*.nav
+*.snm
+*.idx
+*.ilg
+*.ind
+*.glo
+*.gls
+*.ist
+*.acn
+*.acr
+*.alg
+
+# Backups von TeXstudio/Editoren
+*.bak
+*.backup
+*~
+
+# Erzeugte PDF (abgegebene Stände über Git-Tags sichern)
+main.pdf
+main-diff*.pdf
+
+# Betriebssystem
+.DS_Store
+Thumbs.db
+desktop.ini

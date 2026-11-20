@@ -1,0 +1,108 @@
+% !TeX root = main.tex
+% !TeX encoding = UTF-8
+% !TeX spellcheck = de_DE
+% !TeX TXS-program:bibliography = txs:///biber
+% =====================================================================
+%  Projektarbeit (Master) – Hauptdatei
+%  Layout übernommen aus der Bachelorarbeit (Knechtel-Vorlage)
+%  Kompilieren: pdflatex -> biber -> pdflatex -> pdflatex
+% =====================================================================
+
+\documentclass[12pt,a4paper]{article}
+
+% ---------------------------------------------------------------------
+%  Angaben zur Arbeit – HIER ANPASSEN
+% ---------------------------------------------------------------------
+\newcommand{\ArbeitTyp}{Projektarbeit}
+\newcommand{\ArbeitTitel}{Theoretische Betrachtung zu Nano-Imprint-Lithographie}
+\newcommand{\ArbeitUntertitel}{New-Era-Tech für großes Zeug bei X-FAB}
+\newcommand{\AutorName}{Luis Marcus}
+\newcommand{\AutorGeburt}{geb. am 12.08.2003 in Suhl}
+\newcommand{\AutorMatrikel}{315768}
+\newcommand{\Studiengang}{Elektro- und Informationstechnik}
+\newcommand{\Hochschule}{Hochschule Schmalkalden}
+\newcommand{\Fakultaet}{Fakultät Elektrotechnik}
+\newcommand{\Referent}{Prof. Dr.-Ing. Roy Knechtel}
+\newcommand{\Korreferent}{Dipl.-Ing. Holger Klingner}
+\newcommand{\Firma}{X-FAB MEMS Foundry GmbH, Erfurt}
+\newcommand{\FirmaKurz}{X-FAB}
+\newcommand{\AbgabeOrt}{Erfurt}
+\newcommand{\AbgabeDatum}{TT.MM.JJJJ}
+
+% Logos (Ordner abbildungen/Logos/ aus der BA einfach herüberkopieren)
+\newcommand{\LogoFirma}{abbildungen/Logos/X-FAB_logo_petrol_RGB_high-1333927202.jpg}
+\newcommand{\LogoHochschule}{abbildungen/Logos/HSSMLogo.png}
+
+% Sperrvermerk ein-/ausschalten
+\newif\ifSperrvermerk
+\Sperrvermerktrue   % \Sperrvermerkfalse, falls kein Sperrvermerk nötig
+
+% ---------------------------------------------------------------------
+\input{praeambel}
+% ---------------------------------------------------------------------
+
+\newcounter{SeiteVorspann}   % merkt sich die römische Seitenzahl
+
+\begin{document}
+
+% ========== Deckblatt ==========
+\pagenumbering{alph}          % unsichtbar, vermeidet doppelte PDF-Seitenanker
+\input{vorspann/titelseite}
+
+% ========== Vorspann (römische Seitenzahlen) ==========
+\newpage
+\pagenumbering{Roman}
+\ifSperrvermerk
+	\input{vorspann/sperrvermerk}
+	\newpage
+\fi
+\input{vorspann/selbststaendigkeit}
+\newpage
+\input{vorspann/abkuerzungen}
+\newpage
+\input{vorspann/glossar}
+\newpage
+\input{vorspann/zusammenfassung}
+
+% ========== Inhaltsverzeichnis ==========
+\newpage
+\tableofcontents
+\newpage
+\setcounter{SeiteVorspann}{\value{page}}
+
+% ========== Hauptteil (arabische Seitenzahlen) ==========
+\pagenumbering{arabic}
+
+% Tipp: Mit \includeonly{kapitel/03_methodik} in der Präambel
+% wird nur dieses Kapitel neu gesetzt (schnelleres Kompilieren).
+\include{kapitel/01_einleitung}
+\include{kapitel/02_grundlagen}
+\include{kapitel/03_methodik}
+\include{kapitel/04_ergebnisse}
+\include{kapitel/05_diskussion}
+\include{kapitel/06_ausblick}
+\include{kapitel/07_fazit}
+
+% ========== Verzeichnisse (römisch, fortlaufend) ==========
+\clearpage
+\pagenumbering{Roman}
+\setcounter{page}{\value{SeiteVorspann}}
+
+\phantomsection
+\addcontentsline{toc}{section}{Abbildungsverzeichnis}
+\listoffigures
+\newpage
+
+\phantomsection
+\addcontentsline{toc}{section}{Tabellenverzeichnis}
+\listoftables
+\newpage
+
+% ========== Literaturverzeichnis ==========
+\printbibliography[heading=bibintoc]
+\newpage
+
+% ========== Anhang (Seitenzahlen A, B, C ...) ==========
+\input{anhang/anhang}
+
+\end{document}
