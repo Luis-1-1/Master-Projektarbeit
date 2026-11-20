@@ -1,0 +1,52 @@
+% !TeX root = ../main.tex
+% ========== Deckblatt ==========
+\begin{titlepage}
+	\begin{spacing}{1.5}
+		\thispagestyle{empty}
+		\centering
+
+		% Logos nebeneinander (Platzhalter, falls Datei fehlt)
+		\begin{minipage}{0.49\textwidth}
+			\flushleft
+			\IfFileExists{\LogoFirma}
+				{\includegraphics[width=4cm]{\LogoFirma}}
+				{\fbox{\parbox[c][1.5cm][c]{4cm}{\centering Logo Firma}}}
+		\end{minipage}
+		\begin{minipage}{0.49\textwidth}
+			\flushright
+			\IfFileExists{\LogoHochschule}
+				{\includegraphics[width=6cm]{\LogoHochschule}}
+				{\fbox{\parbox[c][1.5cm][c]{6cm}{\centering Logo Hochschule}}}
+		\end{minipage}
+
+		\vspace{1.5cm}
+
+		% Art der Arbeit
+		\Hochschule\\
+		\Fakultaet\\[1.0cm]
+		{\large \ArbeitTyp\\[0.5cm]}
+
+		% Titel
+		{\Large\textbf{\ArbeitTitel}\\[0.3cm]}
+		{\large \ArbeitUntertitel\\[1.0cm]}
+
+		% Verfasser
+		vorgelegt von\\[0.5cm]
+		{\Large\textbf{\AutorName}}\\
+		\AutorGeburt\\
+		Matrikelnummer: \AutorMatrikel\\[1.0cm]
+
+		im Studiengang \Studiengang\\[1cm]
+
+		% Bei Bedarf (z. B. für die Masterarbeit) wieder einkommentieren:
+		% zur\\
+		% Erlangung des akademischen Grades\\
+		% Master of Science\\[1cm]
+
+		Referent: \Referent\\
+		Korreferent: \Korreferent\\[1cm]
+		\AbgabeOrt, den \AbgabeDatum
+
+		\vfill
+	\end{spacing}
+\end{titlepage}
